@@ -18,7 +18,9 @@ app.use(express.json());
 
 // CORS configuration - allowing all origins for development
 const corsOptions = {
-    origin: true, // Allow all origins
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
@@ -35,7 +37,6 @@ const sessionConfig = {
         httpOnly: true,
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 12 * 31 * 24 * 60 * 60 * 1000, // 1 year
-        domain: process.env.NODE_ENV === 'production' ? '.yourdomain.com' : undefined
     }, name: 'sessionId', // Recommended for production with a session store
     // store: new (require('connect-pg-simple')(session))()
 };
