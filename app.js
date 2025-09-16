@@ -18,8 +18,8 @@ app.use(express.json());
 
 // CORS configuration
 const allowedOrigins = [
-    "https://elif-tech-flower-delivery-public-frontend-8vz7qvx1p.vercel.app",
-    "https://elif-tech-flower-delivery-public-fr.vercel.app/"
+    "https://elif-tech-flower-delivery-public-fr.vercel.app",
+    "https://elif-tech-flower-delivery-public-frontend-8vz7qvx1p.vercel.app"
 ];
 const corsOptions = {
     origin: (origin, callback) => {
